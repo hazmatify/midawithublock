@@ -6,6 +6,7 @@ const { createTabs } = require('./src/tabs');
 const { setupMenu } = require('./src/menu');
 const { setupAccount } = require('./src/account');
 const { setupHotkey } = require('./src/hotkey');
+const { setupAdBlock } = require('./src/adblock');
 const { checkForUpdate } = require('./src/updates');
 
 app.setPath('userData', path.join(process.env.LOCALAPPDATA, 'MIDA'));
@@ -18,6 +19,7 @@ app.commandLine.appendSwitch('enable-features', 'NetworkServiceInProcess2');
 app.whenReady().then(() => {
   app.setAppUserModelId('com.itznao.mida');
   nativeTheme.themeSource = 'dark';
+  setupAdBlock();
 
   const win = createWindow();
   const tabs = createTabs(win);
