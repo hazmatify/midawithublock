@@ -1,0 +1,51 @@
+{
+  "name": "mida",
+  "productName": "MIDA",
+  "description": "The Destiny 2 Multi-Tool",
+  "version": "1.0.0",
+  "main": "main.js",
+  "author": "iTz_Nao",
+  "license": "SEE LICENSE IN LICENSE",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "css": "tailwindcss -i ./web/tailwind.css -o ./web/compiled.css --watch",
+    "build:css": "tailwindcss -i ./web/tailwind.css -o ./web/compiled.css",
+    "dist": "npm run build:css && electron-builder --win"
+  },
+  "build": {
+    "appId": "com.itznao.mida",
+    "productName": "MIDA",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "src/**/*",
+      "web/**/*",
+      "!web/tailwind.css",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "web/icon.png"
+    },
+    "nsis": {
+      "license": "LICENSE",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "MIDA"
+    }
+  },
+  "dependencies": {
+    "koffi": "^3.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3",
+    "tailwindcss": "^4.3.3"
+  }
+}
